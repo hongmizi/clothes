@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include RoleModel
+  roles :admin, :designer, :manufacturer, :visitor
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

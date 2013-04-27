@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'cancan'
 gem 'devise'
+gem 'role_model'
 gem 'state_machine'
 
 group :development, :test do
