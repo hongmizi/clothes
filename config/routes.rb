@@ -1,4 +1,10 @@
 Clothes::Application.routes.draw do
+  get "manufacturers/index"
+
+  get "manufacturers/new"
+
+  get "manufacturers/show"
+
   get "/",  to:"home#index"
   resources :designs
   devise_for :users
