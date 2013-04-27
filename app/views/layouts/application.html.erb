@@ -37,12 +37,14 @@
                   </ul>
                 </li>
               </ul>
-              <form class="navbar-form pull-right" method="post" action="/users/sign_in" >
-                <input class="span2" type="text" placeholder="Email">
-                <input class="span2" type="password" placeholder="Password">
-                <button type="submit" class="btn">登录</button>
-                <%= link_to "注册", new_user_registration_path, class:"btn"%>
-              </form>
+              <% if not user_signed_in? %>
+                <form class="navbar-form pull-right" method="post" action="/users/sign_in" >
+                  <input class="span2" type="text" placeholder="Email">
+                  <input class="span2" type="password" placeholder="Password">
+                  <button type="submit" class="btn">登录</button>
+                  <%= link_to "注册", new_user_registration_path, class:"btn"%>
+                </form>
+              <% end %>
             </div><!--/.nav-collapse -->
           </div>
         </div>

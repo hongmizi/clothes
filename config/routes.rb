@@ -1,14 +1,10 @@
 Clothes::Application.routes.draw do
-  get "manufacturers/index"
-
-  get "manufacturers/new"
-
-  get "manufacturers/show"
-
-  get "/",  to:"home#index"
+  root  to:"home#index"
+  resources :manufacturers
   resources :designs
   devise_for :users
-
+  get 'admin', to:"manage/admin#show"
+  get 'designer', to:"manage/designer#show"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
