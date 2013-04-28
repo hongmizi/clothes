@@ -44,6 +44,10 @@
                   <button type="submit" class="btn">登录</button>
                   <%= link_to "注册", new_user_registration_path, class:"btn"%>
                 </form>
+              <% else%>
+                <div class="pull-right">
+                  <%= link_to "个人主页", user_path(current_user) %>
+                </div>
               <% end %>
             </div><!--/.nav-collapse -->
           </div>
@@ -71,7 +75,7 @@
       <%= yield %>
 
       <div class="footer">
-        <p>
+        <p align="center">
           © Company 2013
         </p>
       </div>

@@ -1,5 +1,6 @@
-class ManufacturersController < ApplicationController
-  before_filter :authentication_user!
+# coding: UTF-8
+class Admin::ManufacturersController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :authenrize
 
   def index
@@ -12,9 +13,9 @@ class ManufacturersController < ApplicationController
     @user = User.find(params[:id])
     @user.roles << :manufacturer
     if @user.save
-      render json: {state:"successful"}
+      redirect_to :back, notice:"增加厂家成功" and return
     else
-      render json: {state:"failed"}
+      redirect_to :back, notice:"增加厂家失败" and return
     end
   end
   
@@ -25,9 +26,9 @@ class ManufacturersController < ApplicationController
    @user = User.find(params[:id])
    @user.roles = @user.roles(&:to_s).delete "manufacturer"
     if @user.save
-      render json: {state:"successful"}
+      redirect_to :back, notice:"删除厂家成功" and return
     else
-      render json: {state:"failed"}
+      redirect_to :back, notice:"删除厂家失败" and return
     end
   end
 
