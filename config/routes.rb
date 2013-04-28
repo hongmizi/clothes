@@ -1,7 +1,8 @@
 Clothes::Application.routes.draw do
   root  to:"home#index"
-  resources :manufacturers
   resources :designs
+  resources :designers
+  resources :manufacturers
   devise_for :users
   get 'admin', to:"manage/admin#show"
   get 'designer', to:"manage/designer#show"
