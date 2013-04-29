@@ -1,2 +1,5 @@
-<h1>Designs#new</h1>
-<p>Find me in app/views/designs/new.html.erb</p>
+<%= form_for @design, validate:true do |f|%>
+  <%= f.text_field :name, placeholder:"请输入一个标题..", validate:{presence:true}%>
+  <%= f.text_area :description, placeholder:"在此输入内容..."%>
+  <%= f.submit "创建", class:"btn", disable_with:"正在提交..."%>
+<% end %>

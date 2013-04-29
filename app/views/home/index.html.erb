@@ -1,23 +1,59 @@
-<!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-  <h1>Clothes</h1>
-  <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-  <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<link rel="stylesheet" href="/css/style.css">
+<div class="banner">
+  <ul>
+    <li style="background-image: url('img/sunset.jpg');">
+      <div class="inner">
+        <h1>title</h1>
+        <p>123456789123456789</p>
+        <a class="btnhome" href="#download">详情</a>
+      </div>
+    </li>
+
+    <li style="background-image: url('img/wood.jpg');">
+      <div class="inner">
+        <h1>title</h1>
+        <p>123456789123456789</p>
+        <a class="btnhome" href="#download">详情</a>
+
+      </div>
+    </li>
+
+    <li style="background-image: url('img/shop.jpg');">
+      <div class="inner">
+        <h1>title</h1>
+        <p>123456789123456789</p>
+        <a class="btnhome" href="#download">详情</a>
+      </div>
+    </li>
+  </ul>
 </div>
-<!-- Example row of columns -->
-<div class="row-fluid">
-  <%= render "item" %>
-  <%= render "item" %>
-  <%= render "item" %>
+<div class="container">
+  <div class="row-fluid">
+    <%= render "item" %>
+    <%= render "item" %>
+    <%= render "item" %>
+  </div>
+  <div class="row-fluid">
+    <%= render "item" %>
+    <%= render "item" %>
+    <%= render "item" %>
+  </div>
+  <div class="row-fluid">
+    <%= render "item" %>
+    <%= render "item" %>
+    <%= render "item" %>
+  </div>
 </div>
-<div class="row-fluid">
-  <%= render "item" %>
-  <%= render "item" %>
-  <%= render "item" %>
-</div>
-<div class="row-fluid">
-  <%= render "item" %>
-  <%= render "item" %>
-  <%= render "item" %>
-</div>
+
+<script src="/js/unslider.js"></script>
+  <script>
+    $(function() {
+      $('.banner').unslider({
+        arrows: true,
+        fluid: true,
+        dots: true
+      });
+    });
+  </script>
+
 

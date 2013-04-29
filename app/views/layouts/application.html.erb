@@ -46,6 +46,15 @@
                 </form>
               <% else%>
                 <div class="pull-right">
+                  <% if current_user.has_role? :manufacturer %>
+                    <%= link_to "厂家页面", manufacturer_path %>
+                  <% end %>
+                  <% if current_user.has_role? :designer %>
+                    <%= link_to "设计师页面", designer_path %>
+                  <% end %>
+                  <% if current_user.has_role? :admin %>
+                    <%= link_to "管理员页面", admin_path %>
+                  <% end %>
                   <%= link_to "个人主页", user_path(current_user) %>
                 </div>
               <% end %>
@@ -71,9 +80,9 @@
       <% end %>
       <!-- alert and notice end-->
 
-
-      <%= yield %>
-
+    </div>
+    <%= yield %>
+    <div class="container">
       <div class="footer">
         <p align="center">
           © Company 2013

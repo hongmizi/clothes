@@ -1,11 +1,2 @@
-<% if current_user.has_role? :admin %>
-  <%= link_to "管理员页面", admin_path %>
-<% end %>
 
-<% if current_user.has_role? :designer %>
-  <%= link_to "设计师页面", designer_path %>
-<% end %>
 
-<% if current_user.has_role? :manufacturer %>
-  <%= link_to "厂家页面", manufacturer_path %>
-<% end %>

@@ -6,8 +6,8 @@ Clothes::Application.routes.draw do
   get "admin", to:"users#admin"
   resources :manufacturers, :module => "admin"
   resources :designers, :module => "admin"
-  get "designer", to:"users#designer"
-  get "manufacturer", to:"users#manufacturer"
+  get "designer", to:"users#designer", as:"designer"
+  get "manufacturer", to:"users#manufacturer", as:"manufacturer"
   resources :designs
   # The priority is based upon order of creation:
   # first created -> highest priority.

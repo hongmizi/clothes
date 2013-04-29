@@ -1,4 +1,17 @@
 <div class="well">
   <p align="center">管理员主页</p>
 </div>
-<%= link_to "成员管理", users_path %>
+<%= link_to "设计师管理", designers_path %>
+<%= link_to "厂家管理", manufacturers_path %>
+<table class="table">
+  <tr>
+    <th>所有用户</th>
+    <th>设计师</th>
+    <td>厂家</th>
+  </tr>
+  <tr>
+    <td><%= @users.count %></td>
+    <td><%= @designers.count %></td>
+    <td><%= @manufacturers.count %></td>
+  </tr>
+</table>
