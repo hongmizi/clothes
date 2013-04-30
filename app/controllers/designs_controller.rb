@@ -19,7 +19,10 @@ class DesignsController < ApplicationController
   end
 
   def show
+    @design = Design.find(params[:id])
+    authorize! :manage, @design
   end
+
   protected
   def ensure_user_is_designer
     if not current_user.has_role? :designer

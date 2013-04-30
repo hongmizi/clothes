@@ -4,6 +4,7 @@ class Admin::ManufacturersController < ApplicationController
   before_filter :authenrize
 
   def index
+    @users = User.all.select { |user| user.has_role? :manufacturer}
   end
 
   def new

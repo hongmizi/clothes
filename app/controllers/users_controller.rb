@@ -18,11 +18,11 @@ class UsersController < ApplicationController
     @users = User.all
     @designers = User.all.select { |user| user.has_role? :designer}
     @manufacturers = User.all.select { |user| user.has_role? :manufacturer}
-
+    @designs = Design.all
   end
 
   def designer
-    if not current_user.has_role? :designer 
+    if not current_user.has_role? :designer
       redirect_to user_path(current_user.id), alert:"你没有权限访问此页面" and return
     end
     @designs = current_user.designs

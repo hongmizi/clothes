@@ -1,13 +1,29 @@
-<table class="table">
-  <tr>
-    <th>总数</th>
-    <th>已提交</th>
-    <th>审核通过</th>
-  </tr>
-  <tr>
-    <td><%=@designs.count%></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-<%= link_to "增加设计", new_design_path %>
+<div class="container">
+  <%= link_to "增加设计", new_design_path %>
+  <table class="table">
+    <tr>
+      <th>总数</th>
+      <th>已提交</th>
+      <th>审核通过</th>
+    </tr>
+    <tr>
+      <td><%=@designs.count%></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>ID</th>
+      <th>标题</th>
+      <th></th>
+    </tr>
+    <% @designs.each do |design| %>
+      <tr>
+        <td><%=design.id%></td>
+        <td><%=link_to design.name, design_path(design.id)%></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
