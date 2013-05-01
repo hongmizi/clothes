@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @designers = User.all.select { |user| user.has_role? :designer}
     @manufacturers = User.all.select { |user| user.has_role? :manufacturer}
     @designs = Design.all
+    @products = Product.all
   end
 
   def designer

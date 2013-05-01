@@ -8,6 +8,9 @@ class Ability
     can :manage, Design do |design|
       design.user == user
     end
+    can :manage, Product do
+      user.has_role? :admin 
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
