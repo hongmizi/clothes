@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :designs
   has_one :manufacturer
+  has_many :orders
 end

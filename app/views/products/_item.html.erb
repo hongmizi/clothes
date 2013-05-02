@@ -1,9 +1,12 @@
-<div>
-  title:<%= product.title%>
-</div>
-<div>
-  description:<%= product.description%>
-</div>
-<div>
-  price:<%= product.price%>
+
+<div class="span4">
+  <h2>
+  <%= product.title%>
+  </h2>
+  <p>
+  <%= product.description%>
+  </p>
+  <p>
+    <%= link_to "View details »", product_path(product), class:"btn"%>
+  </p>
 </div>

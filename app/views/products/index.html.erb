@@ -1,16 +1,7 @@
 <div class="container">
 
   <% @products.each_with_index do |product, i| %>
-    <% if i%3 == 0 %>
-      <div class="row">
-      <% end %>
-      <div class="span3">
-        <%= render "item", product:product%>
-      </div>
-   <% if i%3 == 0 %>
-      </div>
-   <% end %>
+    <%= render "item", product:product%>
   <% end %>
-
 
 </div>
