@@ -32,10 +32,10 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.html { redirect_to new_order_path(product_id:params[:product_id]), alert:@order.errors }
+        format.html { redirect_to :back, alert:@order.errors }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end

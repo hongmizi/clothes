@@ -1,20 +1,30 @@
 Clothes::Application.routes.draw do
 
-  resources :orders
+  root to: "home#index"
 
+  resources :products do
+    resources :orders
+  end
 
-  resources :products
-
-
-  root  to: "home#index"
-  devise_for :users
-  resources :users
-  get "admin", to:"users#admin"
-  resources :manufacturers, :module => "admin"
-  resources :designers, :module => "admin"
-  get "designer", to:"users#designer", as:"designer"
-  get "manufacturer", to:"users#manufacturer", as:"manufacturer"
   resources :designs
+
+  namespace :settings do
+    get :profile, to:"settings#profile"
+  end
+
+  devise_for :users
+
+  get "designer", to:"designer#show", as:"designer"
+  get "manufacturer", to:"manufacturer#show", as:"manufacturer"
+  
+  get "admin", to:"admin#show"
+  namespace :admin do
+    resources :users
+    resources :orders
+    resources :products
+    resources :manufacturers
+    resources :designers
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

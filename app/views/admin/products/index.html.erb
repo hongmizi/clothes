@@ -1,0 +1,7 @@
+<div class="container">
+
+  <% @products.each_with_index do |product, i| %>
+    <%= render "item", product:product%>
+  <% end %>
+
+</div>
