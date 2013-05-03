@@ -2,15 +2,12 @@ Clothes::Application.routes.draw do
 
   root to: "home#index"
 
-  resources :products do
-    resources :orders
-  end
+  resources :products, only:[:show, :index]
 
+  resources :orders
   resources :designs
 
-  namespace :settings do
-    get :profile, to:"settings#profile"
-  end
+  get "settings/profile", to:"settings#profile"
 
   devise_for :users
 
@@ -19,11 +16,11 @@ Clothes::Application.routes.draw do
   
   get "admin", to:"admin#show"
   namespace :admin do
-    resources :users
     resources :orders
     resources :products
     resources :manufacturers
     resources :designers
+    resources :users
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

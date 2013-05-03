@@ -1,12 +1,13 @@
 <div class="container">
 <table class="table">
+  <caption><b>Your Orders</b></caption>
   <tr>
     <th>ID</th>
-    <th>产品</th>
-    <th>数量</th>
-    <th>地址</th>
-    <th>留言</th>
-    <th></th>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Address</th>
+    <th>Message</th>
+    <th>State</th>
     <th></th>
     <th></th>
   </tr>
@@ -19,7 +20,7 @@
     <td><%= order.quantity %></td>
     <td><%= order.address %></td>
     <td><%= order.message %></td>
-    <td><%= link_to 'Show', order %></td>
+    <td></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
   </tr>
 <% end %>

@@ -16,6 +16,6 @@
     <%= @product.price %>
   </p>
 
-  <%= link_to "Buy", new_product_order_path(@product), class:"btn"%>
+  <%= link_to "Buy", new_order_path(@product, product_id:@product.id), class:"btn btn-success btn-large"%>
 
 </div>

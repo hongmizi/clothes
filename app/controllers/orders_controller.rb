@@ -29,13 +29,13 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = current_user.orders.new(params[:order])
-    
+
     respond_to do |format|
       if @order.save
         format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.html { redirect_to :back, alert:@order.errors }
+        format.html { redirect_to :back, alert:@order.errors.full_messages.map(&:to_s) }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end

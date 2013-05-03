@@ -12,13 +12,13 @@
         <tr>
           <td><%= user.id %></td>
           <td><%= user.email %></td>
-          <td><%= button_to "删除", manufacturer_path(user.id), class:"btn", method: :delete %></td>
+          <td><%= button_to "删除", admin_manufacturer_path(user.id), class:"btn", method: :delete %></td>
         </tr>
       <% end %>
     <% end %>
   </table>
 
-  <%= form_tag manufacturers_path, method: "post" do%>
+  <%= form_tag admin_manufacturers_path, method: "post" do%>
     <%= label_tag :add_manufacturer, "增加厂家"%>
     <%= select_tag :id, options_from_collection_for_select(User.all, "id", "email") %>
     <%= submit_tag "确定", class:"btn"%>
