@@ -16,7 +16,7 @@
   <tr>
 
     <td><%= order.id %></td>
-    <td><%= order.user.email %></td>
+    <td><%= link_to UserDomain::get_user_name(order.user.id), admin_user_path(order.user.id) %></td>
     <td><%= link_to order.product.title, product_path(order.product) %></td>
     <td><%= order.quantity %></td>
     <td><%= order.address %></td>

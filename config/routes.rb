@@ -8,7 +8,7 @@ Clothes::Application.routes.draw do
   resources :designs
 
   get "settings/profile", to:"settings#profile"
-
+  put "settings/update", to:"settings#update"
   devise_for :users
 
   get "designer", to:"designer#show", as:"designer"
