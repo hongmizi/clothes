@@ -1,5 +1,9 @@
 Clothes::Application.routes.draw do
 
+  get "profile/show"
+
+  get "profile/update"
+
   root to: "home#index"
 
   resources :products, only:[:show, :index]
