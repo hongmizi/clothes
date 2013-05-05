@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   has_many :designs
   has_one :manufacturer
   has_many :orders
+  has_one :cart
 end
