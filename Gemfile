@@ -9,7 +9,7 @@ gem 'cancan'
 gem 'devise'
 gem 'role_model'
 gem 'state_machine'
-
+gem 'rails_kindeditor', '~> 0.3.15'
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'

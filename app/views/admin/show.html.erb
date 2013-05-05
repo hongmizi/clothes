@@ -54,13 +54,13 @@
           <tr>
             <th>ID</th>
             <th>标题</th>
-            <th>价格</th>
+            <th></th>
           </tr>
           <% @products.each do |product| %>
             <tr>
               <td><%=product.id%></td>
               <td><%=link_to product.title, edit_admin_product_path(product)%></td>
-              <td><%=product.price%></td>
+              <td></td>
             </tr>
           <% end %>
         </table>
@@ -73,7 +73,7 @@
           <tr>
             <th>ID</th>
             <th>用户</th>
-            <th>产品名称</th>
+            <th>发往厂家</th>
             <th>单价</th>
             <th>数量</th>
             <th>总价</th>
@@ -82,8 +82,8 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%=order.id%></td>
-              <td><%=link_to order.user.email, admin_user_path(order.user)%></td>
-              <td><%=link_to order.product.title, admin_product_path(order.product)%></td>
+              <td><%=link_to UserDomain::get_user_name(order.user.id), admin_user_path(order.user)%></td>
+              <td><%= %></td>
               <td><%=%></td>
             </tr>
           <% end %>
