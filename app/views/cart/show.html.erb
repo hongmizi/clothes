@@ -1,0 +1,15 @@
+<div class="container">
+  <table>
+    <tr>
+      <th>Orders</th>
+    </tr>
+    <% @card.order.each do |order|%>
+      <tr>
+        <td>
+          <% order.line_items.each do |line_item| %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
