@@ -31,3 +31,4 @@ pickle-email-*.html
 *.swp
 *.swo
 *.swn
+public/uploads/*
