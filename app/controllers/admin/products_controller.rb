@@ -1,7 +1,6 @@
 class Admin::ProductsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :ensure_user_is_admin, :except => [:show, :index]
-
+  before_filter :authenticate_user!
+  before_filter :ensure_user_is_admin
   def index
     @products = Product.all
   end
@@ -9,7 +8,16 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
   end
+  
+  def create
+    @product = Product.new(params[:product])
+    if @product.save
+      redirect_to admin_products_path, notice:"success!" and return
+    else
+      redirect_to :back, alert:@product.errors.full_messages and return
+    end
 
+  end
 
   def show
     @product = Product.find(params[:id])

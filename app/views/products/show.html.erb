@@ -1,21 +1,21 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+    </div>
+    <div class="span8">
+      <p>
+        <h1> <b> <%= @product.title %> </b></h1>
+      </p>
+      <p>
+        picture
+        category
+      </p>
 
-  <p>
-    <b>Title:</b>
-    <%= @product.title %>
-  </p>
+      <p>
+      <%= link_to "Buy", new_order_path(@product, product_id:@product.id), class:"btn btn-success btn-large"%>
+      </p>
+        <%= @product.description.html_safe %>
 
-  <p>
-    <b>Description:</b>
-    <%= @product.description %>
-  </p>
-
-  <p>
-    <b>Price:</b>
-    <%= @product.price %>
-  </p>
-
-  <%= link_to "Buy", new_order_path(@product, product_id:@product.id), class:"btn btn-success btn-large"%>
-
+    </div>
+  </div>
 </div>

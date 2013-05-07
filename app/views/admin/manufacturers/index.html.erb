@@ -12,7 +12,7 @@
         <tr>
           <td><%= user.id %></td>
           <td><%= user.email %></td>
-          <td><%= button_to "删除", admin_manufacturer_path(user.id), class:"btn", method: :delete %></td>
+          <td><%= button_to "删除", admin_manufacturer_path(user.id), class:"btn", method: :delete, confirm:"你确定要删除么?" %></td>
         </tr>
       <% end %>
     <% end %>
