@@ -47,23 +47,23 @@
                       </ul>
                     </li>
                   <% end %>
+                  <li><%= link_to "My Cart (#{UserDomain.get_user_cart_line_items current_user.id})", cart_path %></li>
 
-
-                <li class="divider-vertical"></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">MyOrders<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Ordered</a></li>
-                    <li><a href="#">Delivered</a></li>
-                    <li><%=link_to "All", orders_path%></li>
-                  </ul>
-                </li>
-                <li> <%= link_to "Profile", settings_profile_path%></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-              <% else %>
-                <li> <%= link_to "Sign In", new_user_session_path%></li>
-                <li> <%= link_to "Register", new_user_registration_path%> </li>
-              <% end %>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">MyOrders<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Ordered</a></li>
+                      <li><a href="#">Delivered</a></li>
+                      <li><%=link_to "All", orders_path%></li>
+                    </ul>
+                  </li>
+                  <li> <%= link_to "Profile", settings_profile_path%></li>
+                  <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li> <%= link_to "Sign In", new_user_session_path%></li>
+                  <li> <%= link_to "Register", new_user_registration_path%> </li>
+                <% end %>
               </ul>
             </div>
           </div>

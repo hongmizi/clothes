@@ -8,14 +8,28 @@
       </p>
       <p>
         <%= image_tag(@product.image_url) %>
-        category
+        category:
+        numbers:
       </p>
 
       <p>
-      <%= link_to "Add to Card", new_order_path(@product, product_id:@product.id), class:"btn btn-success btn-large"%>
+      <%= link_to "Add to Cart", "javascript:void(0)", id:"add_to_cart", class:"btn btn-success btn-large"%>
       </p>
         <%= @product.description.html_safe %>
 
     </div>
   </div>
 </div>
+
+<script>
+  $("#add_to_cart").click(function(){
+    $.ajax({
+      type: "PUT",
+      url: "/cart"
+      }).done(function(response){
+        alert("success!");
+      }).fail(function(response){
+      alert(response.responseText);
+    })
+  });
+</script>

@@ -1,6 +1,7 @@
 Clothes::Application.routes.draw do
 
-  get "cart/show"
+  get "cart", to:"cart#show"
+  put "cart", to:"cart#update"
 
   get "profile/show"
 

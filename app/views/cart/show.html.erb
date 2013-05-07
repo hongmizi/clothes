@@ -1,13 +1,15 @@
 <div class="container">
-  <table>
+  <table class="table">
     <tr>
-      <th>Orders</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
     </tr>
-    <% @card.order.each do |order|%>
+    <% @cart.line_items.each do |line_item|%>
       <tr>
         <td>
-          <% order.line_items.each do |line_item| %>
-          <% end %>
+          <%= line_item.listing.titile %>
         </td>
       </tr>
     <% end %>
