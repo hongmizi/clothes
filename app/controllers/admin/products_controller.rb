@@ -12,7 +12,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     if @product.save
-      redirect_to admin_products_path, notice:"success!" and return
+      redirect_to admin_path, notice:"success!" and return
     else
       redirect_to :back, alert:@product.errors.full_messages and return
     end

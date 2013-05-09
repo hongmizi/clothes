@@ -7,15 +7,18 @@
         <h1> <b> <%= @product.title %> </b></h1>
       </p>
       <p>
-        <%= image_tag(@product.image_url) %>
+        <%= image_tag(@product.image_url, class: "img-polaroid") %>
         category:
-        numbers:
+        <p>
+          <%= label_tag "Stock:100"%>
+          <%= number_field_tag "quantity", 1, min:1%>
+        </p>
       </p>
 
       <p>
-      <%= link_to "Add to Cart", "javascript:void(0)", id:"add_to_cart", class:"btn btn-success btn-large"%>
+        <%= link_to "Add to Cart", "javascript:void(0)", id:"add_to_cart", class:"btn btn-success btn-large"%>
       </p>
-        <%= @product.description.html_safe %>
+      <%= @product.description.html_safe %>
 
     </div>
   </div>
@@ -27,7 +30,7 @@
       type: "PUT",
       url: "/cart"
       }).done(function(response){
-        alert("success!");
+      alert("success!");
       }).fail(function(response){
       alert(response.responseText);
     })
