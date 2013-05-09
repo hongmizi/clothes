@@ -3,5 +3,5 @@ class Order < ActiveRecord::Base
   validates :user_id, :address, presence:true
   validates :price, numericality:{greater_than_or_equal_to:0.01}
   belongs_to :user
-  has_many :line_items
+  has_many :line_items, as: :referable
 end
