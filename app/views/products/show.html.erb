@@ -7,16 +7,29 @@
         <h1> <b> <%= @product.title %> </b></h1>
       </p>
       <p>
-        <%= image_tag(@product.image_url, class: "img-polaroid") %>
-        category:
-        <p>
-          <%= label_tag "Stock:100"%>
-          <%= number_field_tag "quantity", 1, min:1%>
-        </p>
-      </p>
-
-      <p>
-        <%= link_to "Add to Cart", "javascript:void(0)", id:"add_to_cart", class:"btn btn-success btn-large"%>
+        <div class="row-fluid">
+          <div class="span3">
+            <%= image_tag(@product.image_url, class: "img-polaroid") %>
+          </div>
+          <div class="span5 cart">
+            <%= form_tag "/cart", method: :put do%>
+              <%= label_tag "Types:"%>
+              <% @product.listings.each do |list|%>
+                <div  style="float:left;width:60px;padding-top:2px;">
+                  <%= radio_button_tag :listing_id, list.id%>
+                  <%= label_tag list.types%>
+                </div>
+              <% end %>
+              <div style="float:left;">
+                <%= label_tag "How much do you want to buy?"%>
+                <%= number_field_tag "quantity", 1, min:1%>
+                <%= label_tag "Stock: 100"%>
+              </div>
+              <br /> <br /><br /> <br />
+              <%= submit_tag "Add to Cart", class: "btn btn-success btn-large"%>
+            <% end %>
+          </div>
+        </div>
       </p>
       <%= @product.description.html_safe %>
 
@@ -25,14 +38,4 @@
 </div>
 
 <script>
-  $("#add_to_cart").click(function(){
-    $.ajax({
-      type: "PUT",
-      url: "/cart"
-      }).done(function(response){
-      alert("success!");
-      }).fail(function(response){
-      alert(response.responseText);
-    })
-  });
 </script>

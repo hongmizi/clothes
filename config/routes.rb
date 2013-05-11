@@ -2,8 +2,7 @@ Clothes::Application.routes.draw do
 
   get "cart", to:"cart#show"
   put "cart", to:"cart#update"
-
-  get "profile/show"
+  delete "cart", to:"cart#destroy"
 
   get "profile/update"
 
@@ -24,7 +23,9 @@ Clothes::Application.routes.draw do
   get "admin", to:"admin#show"
   namespace :admin do
     resources :orders
-    resources :products
+    resources :products do
+      resources :listings, only: [:create, :update, :destroy]
+    end
     resources :manufacturers
     resources :designers
     resources :users

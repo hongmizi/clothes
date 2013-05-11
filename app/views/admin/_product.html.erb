@@ -2,10 +2,26 @@
   <%=link_to product.title, edit_admin_product_path(product)%>
 </p>
 <% product.listings.each do |list|%>
-<p>
-  <%= "#{list.color} #{list.size} 库存:#{list.stock} 价格:#{list.price}"%>
-</p>
+  <p>
+    <%= "类型:#{list.types}  库存:#{list.stock} 价格:#{list.price}"%>
+  </p>
 <% end %>
+
+<div id="add_new_listing_form_<%= "#{product.id}"%>" style="display: none;">
+  <%= form_tag admin_product_listings_path(product), method: :post do%>
+  <%= text_field_tag :types, "", placeholder:"类型"%>
+  <%= number_field_tag :stock, "", placeholder:"库存" %>
+  <%= text_field_tag :price, "", placeholder:"价格"%>
+  <%= submit_tag "OK"%>
+<% end %>
+</div>
+
 <p>
-  <%= link_to "增加新类别","" %>
+  <%= link_to "增加新类别","javascript:void(0)", id:"add_new_listing_#{product.id}" %>
 </p>
+
+<script>
+  $("<%= "#add_new_listing_#{product.id}"%>").click(function(){
+    $("#add_new_listing_form_<%= product.id %>").show()
+  })
+</script>
