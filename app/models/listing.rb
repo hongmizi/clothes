@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  attr_accessible :color, :product_id, :size, :stock
+  attr_accessible :product_id, :stock, :type
   validates :product_id, presence:true
   belongs_to :product
   belongs_to :line_item
