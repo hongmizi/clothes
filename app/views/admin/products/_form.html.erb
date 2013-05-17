@@ -12,10 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :image %>
+    <%= f.label :image_label %>
     <%= image_tag @product.image_url %>
-    <%= f.text_field :image_url%>
-    
+    <%= f.file_field 'image'%>
   </div>
 
   <div class="field">

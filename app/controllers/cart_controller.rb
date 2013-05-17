@@ -9,7 +9,7 @@ class CartController < ApplicationController
     quantity = params[:quantity]
 
     if listing == nil
-      return redirect_to :back, alert: "Can't find the product!"
+      return redirect_to :back, alert: "Please select a type"
       #return render text: "Can't find the product!", status:400
     end
     if listing.can_order?(quantity) == false
