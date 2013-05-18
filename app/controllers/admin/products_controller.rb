@@ -1,20 +1,22 @@
 class Admin::ProductsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :ensure_user_is_admin
+
   def index
     @products = Product.all
   end
-  
+
   def new
     @product = Product.new
   end
-  
+
   def create
     @product = Product.new(params[:product])
+
     if @product.save
       redirect_to admin_path, notice:"success!" and return
     else
-      redirect_to :back, alert:@product.errors.full_messages and return
+      redirect_to :back, alert:@product.errors.full_messages.to_sentence and return
     end
 
   end
@@ -29,20 +31,14 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if params[:product][:image]
-      uploaded_io = params[:product][:image]
-      
-      path = Rails.root.join('public', 'uploads', 'products_image')
-      FileUtils.mkdir_p(path) unless File.exists?(path)
 
-      File.open(path + @product.id.to_s, 'wb') do |file|
-        file.write(uploaded_io.read)
-      end
+    if params[:product][:image]
+      @product.update_image params[:product][:image]
     end
 
     @product.title = params[:product][:title]
     @product.description = params[:product][:description]
-    @product.image_url = "/uploads/products_image/#{@product.id}"
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to :back, notice: 'Product was successfully updated.' }
@@ -56,7 +52,13 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+
+
+    if @product.destroy
+      redirect_to :back, notice: "Successful"
+    else
+      redirect_to :back, alert: @product.errors.full_messages.to_sentence
+    end
   end
 
   private
