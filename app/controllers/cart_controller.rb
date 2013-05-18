@@ -47,6 +47,6 @@ class CartController < ApplicationController
   private
   def load_cart
     @cart = current_user.cart
-    @cart ||= current_user.build_cart
+    @cart ||= current_user.create_cart
   end
 end
