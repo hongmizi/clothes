@@ -1,16 +1,17 @@
 # coding: UTF-8
 class DesignsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :ensure_user_is_designer
+  before_filter :ensure_user_is_designer, only: [:new, :create]
   def index
   end
 
   def new
     @design = Design.new
   end
-  
+
   def create
     @design = current_user.designs.new(params[:design])
+
     if @design.save
       redirect_to designer_path, notice:"增加设计成功!" and return
     else

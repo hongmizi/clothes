@@ -9,7 +9,7 @@ class DesignerController < ApplicationController
   private
   def ensure_user_is_designer
     if not current_user.has_role? :designer
-      redirect_to user_path(current_user.id), alert:"permission decline!", status:401 and return
+      return redirect_to user_path(current_user), alert:"permission decline!"
     end
   end
 end

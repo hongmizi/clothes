@@ -1,8 +1,8 @@
 Clothes::Application.routes.draw do
 
   get "cart", to:"cart#show"
-  put "cart", to:"cart#update"
-  delete "cart", to:"cart#destroy"
+  put "cart", to:"cart#add_line_item"
+  delete "cart", to:"cart#remove_line_item"
 
   get "profile/update"
 
@@ -14,8 +14,8 @@ Clothes::Application.routes.draw do
   resources :orders
   resources :designs
 
-  get "settings/profile", to:"settings#profile"
-  put "settings/update", to:"settings#update"
+  get "settings/profile", to:"profile#show"
+  put "settings/update", to:"profile#update"
   devise_for :users
 
   get "designer", to:"designer#show", as:"designer"

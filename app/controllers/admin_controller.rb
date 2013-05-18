@@ -9,8 +9,8 @@ class AdminController < ApplicationController
     @designs = Design.all
     @products = Product.all
     @orders = Order.all
-
   end
+
   private
   def ensure_user_is_admin
     authorize! :manage, :all
