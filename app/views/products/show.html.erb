@@ -12,13 +12,19 @@
             <%= image_tag(@product.image_url, class: "img-polaroid") %>
           </div>
           <div class="span5 cart">
+            <h3>Price: <b id="price"><%= @product.listings[0].price if @product.listings.present?%></b></h3>
             <%= form_tag "/cart", method: :put do%>
-              <% @product.listings.each do |list|%>
-                <div  id="types" style="float:left;width:60px;padding-top:2px;">
-                  <%= radio_button_tag :listing_id, list.id%>
+              <% @product.listings.each_with_index do |list, index|%>
+                <div  class="types" style="float:left;width:60px;padding-top:2px;">
+                  <% if index == 0 %>
+                    <%= radio_button_tag :listing_id, list.id, true %>
+                  <% else %>
+                    <%= radio_button_tag :listing_id, list.id%>
+                  <% end %>
                   <%= label_tag list.types%>
                 </div>
               <% end %>
+              <br />
               <div style="float:left;">
                 <%= label_tag "How much do you want to buy?"%>
                 <%= number_field_tag "quantity", 1, min:1%>
@@ -51,8 +57,8 @@
         url: "/listings/" +this.value
         }).done(function(response){
         $(".stock").show()
-        $("#stock").text(response)
-
+        $("#stock").text(response["stock"])
+        $("#price").text(response["price"])
     });
     });
   });

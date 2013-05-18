@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
-    render text: @listing.stock
+    render json: {stock: @listing.stock, price: @listing.price}
   end
 end
 

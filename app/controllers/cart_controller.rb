@@ -16,6 +16,10 @@ class CartController < ApplicationController
     if listing.can_order?(quantity) == false
       return redirect_to :back, alert:"sorry, we don't have so much product.."
     end
+    
+    if params[:listing_id].nil?
+      return  redirect_to :back, alert: "Plase select a type"
+    end
 
     @cart.line_items.new listing_id: listing.id, quantity: quantity, price:listing.price
 
