@@ -9,6 +9,7 @@ Clothes::Application.routes.draw do
   root to: "home#index"
 
   resources :products, only:[:show, :index]
+  resources :listings, only:[:show]
 
   resources :orders
   resources :designs

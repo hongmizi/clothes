@@ -14,7 +14,7 @@
           <div class="span5 cart">
             <%= form_tag "/cart", method: :put do%>
               <% @product.listings.each do |list|%>
-                <div  style="float:left;width:60px;padding-top:2px;">
+                <div  id="types" style="float:left;width:60px;padding-top:2px;">
                   <%= radio_button_tag :listing_id, list.id%>
                   <%= label_tag list.types%>
                 </div>
@@ -22,7 +22,10 @@
               <div style="float:left;">
                 <%= label_tag "How much do you want to buy?"%>
                 <%= number_field_tag "quantity", 1, min:1%>
-                <%= label_tag "Stock: 100"%>
+                <div class="stock">
+                  Stock:
+                  <b id="stock"></b>
+                </div>
               </div>
               <div>
                 <br /><br /><br /><br /><br /><br /><br /><br />
@@ -39,4 +42,18 @@
 </div>
 
 <script>
+  $(function() {
+    $(".stock").hide();
+
+    $('input:radio').change(function() {
+      $.ajax({
+        type:"GET",
+        url: "/listings/" +this.value
+        }).done(function(response){
+        $(".stock").show()
+        $("#stock").text(response)
+
+    });
+    });
+  });
 </script>
