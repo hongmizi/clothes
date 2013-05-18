@@ -12,10 +12,11 @@ class Product < ActiveRecord::Base
     path = Rails.root.join('public', 'uploads', 'products_image')
     FileUtils.mkdir_p(path) unless File.exists?(path)
 
-    File.open(path + @product.id.to_s, 'wb') do |file|
+    file_name =Time.now.to_i.to_s
+    File.open(path + file_name, 'wb') do |file|
       file.write(image.read)
     end
 
-    image_url = "/uploads/products_image/#{@product.id}"
+    self.image_url = "/uploads/products_image/#{file_name}"
   end
 end

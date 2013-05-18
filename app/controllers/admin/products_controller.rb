@@ -11,7 +11,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(params[:product])
+    @product = Product.new(title: params[:product][:title], description: params[:product][:description])
+
+    if params[:product][:image]
+      @product.update_image params[:product][:image]
+    end
 
     if @product.save
       redirect_to admin_path, notice:"success!" and return
